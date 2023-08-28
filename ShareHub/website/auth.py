@@ -4,9 +4,9 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def login():
-    pass
+    return "Login"
 
 
-@auth.route('/signout')
-def signout():
-    pass
+@auth.route('/logout')
+def logout():
+    return "Logout"
