@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}ShareHub | Login{% endblock %}
+
+{% block content%}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="container p-5 login" data-aos="zoom-in" data-aos-delay="100">
+        <h2 class="text-center mb-4">Connexion</h2>
+        <form method="POST">
+          <formgroup class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+            <small class="small">Veuillez entrer votre mail de connexion ETTIAM</small>
+          </formgroup><br><br>
+          <formgroup class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </formgroup><br><br>
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+{% endblock %}
