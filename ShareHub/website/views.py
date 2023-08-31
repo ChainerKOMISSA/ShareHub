@@ -11,3 +11,7 @@ def home():
 @views.route('/files')
 def files():
     return render_template('files.html')
+
+@views.route('/upload')
+def upload():
+    return render_template('upload.html')

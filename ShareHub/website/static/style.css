@@ -491,6 +491,23 @@ section {
   fill: #11dbcf;
 }
 
+.haut {
+    display : flex;
+    flex-direction : row;
+}
+
+.side1 {
+    display : flex;
+    flex-direction : col;
+    width : 75%;
+}
+
+.side2 {
+    display : flex;
+    flex-direction : col;
+    width : 25%;
+    margin-left: 40px;
+}
 
 /*--------------------------------------------------------------
 # Footer

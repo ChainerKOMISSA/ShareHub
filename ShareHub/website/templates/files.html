@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% block title %}ShareHub | Gestionnaire de fichiers {% endblock %}
+
 {% block content %}
 
 <!-- ======= Services Section ======= -->
@@ -6,15 +9,16 @@
 
         <div class="section-title">
           <h2>Gestionnaire de fichiers</h2>
-          <p>Tous les fichiers uploadés sur le site.</p>
+          <p>Tous les fichiers déposés sur le site se trouvent ici.</p>
         </div>
-        <div>
-          <form>
-            <div class="input-group mb-3">
+        <div class="haut">
+           <div class="input-group mb-3 side1">
               <input type="text" class="form-control" placeholder="Rechercher..." aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-outline-primary" type="button" id="button-addon2">Button</button>
+              <button class="btn btn-outline-primary" type="button" id="button-addon2">Rechercher</button>
             </div>
-          </form>
+          <div class="input-group mb-3 side2">
+              <a href="/upload" type="button" class="btn btn-outline-primary">Déposer un nouveau fichier</a>
+            </div>
         </div><br>
       <div class="row">
 
