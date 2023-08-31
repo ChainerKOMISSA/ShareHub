@@ -1,11 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from . import db
-from flask_login import login_user, login_required, logout_user, current_user
-
-
-
 
 auth = Blueprint('auth', __name__)
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -22,7 +19,6 @@ def login():
             #utilisateur_dict['emailuser'] = utilisateur[0]
             #utilisateur_dict['passworduser'] = utilisateur[1]
             flash('Connexion réussie!', category='success')
-            login_user(utilisateur, remember=True)
             return redirect(url_for('views.home'))
         else:
             flash('Identifiants incorrects, Veuillez réessayer', category='error')
@@ -31,5 +27,4 @@ def login():
 
 @auth.route('/logout')
 def logout():
-    logout_user()
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('views.home'))

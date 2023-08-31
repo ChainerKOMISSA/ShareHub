@@ -1,6 +1,7 @@
 from flask import Flask
 #from flask_sqlalchemy import SQLAlchemy
 import mysql.connector
+from flask_login import LoginManager
 
 #db = SQLAlchemy()
 #DB_NAME = "shareandgodb"
