@@ -19,7 +19,7 @@ def login():
             #utilisateur_dict['emailuser'] = utilisateur[0]
             #utilisateur_dict['passworduser'] = utilisateur[1]
             flash('Connexion réussie!', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.files'))
         else:
             flash('Identifiants incorrects, Veuillez réessayer', category='error')
     return render_template('login.html')
