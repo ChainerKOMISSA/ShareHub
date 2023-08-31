@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
-DB_NAME = "shareandgodatabase"
+DB_NAME = "shareandgodb"
 
 def create_app():
     app = Flask(__name__)
