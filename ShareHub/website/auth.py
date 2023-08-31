@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, flash
-from .models import user
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from . import db
+from flask_login import login_user, login_required, logout_user, current_user
+
 
 
 
@@ -11,17 +12,24 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        utilisateur = user.query.filter_by(emailuser=email).first()
+        cursor = db.cursor()
+        query = "SELECT * FROM User WHERE emailuser = %s AND passworduser = %s"
+        cursor.execute(query, (email, password))
+        utilisateur = cursor.fetchone()
+        cursor.close()
+        #utilisateur_dict = {}
         if utilisateur:
-            if user.passworduser == password:
-                flash('Connexion réussie!', category='success')
-            else:
-                flash('Mot de passe incorrect, Veuillez réessayer', category='error')
+            #utilisateur_dict['emailuser'] = utilisateur[0]
+            #utilisateur_dict['passworduser'] = utilisateur[1]
+            flash('Connexion réussie!', category='success')
+            login_user(utilisateur, remember=True)
+            return redirect(url_for('views.home'))
         else:
-            flash('Email incorrect, Veuillez réessayer', category='error')
+            flash('Identifiants incorrects, Veuillez réessayer', category='error')
     return render_template('login.html')
 
 
 @auth.route('/logout')
 def logout():
-    return "Logout"
+    logout_user()
+    return redirect(url_for('auth.login'))
