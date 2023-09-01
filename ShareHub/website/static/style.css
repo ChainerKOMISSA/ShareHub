@@ -356,7 +356,27 @@ section {
 
 .login {
     width : 70%;
+    background-color : #fff;
 }
+
+/*------------------------------------------------------------
+#Upload
+--------------------------------------------------------------*/
+.upload {
+    background-color : #fff;
+    flex-direction : row;
+}
+
+.btnform {
+    display : flex;
+    align-items : center;
+    justify-content : end;
+}
+
+.btn {
+    margin : 10px;
+}
+
 
 /*--------------------------------------------------------------
 # Services

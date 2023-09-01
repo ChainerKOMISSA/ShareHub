@@ -9,19 +9,25 @@
   </div>
 
     <div class="d-flex align-items-center justify-content-center">
-      <div class="container p-5 login" data-aos="zoom-in" data-aos-delay="100">
-        <h2 class="text-center mb-4">Ajouter un nouveau fichier</h2>
+      <div class="container p-5 upload" data-aos="zoom-in" data-aos-delay="100">
+        <!--<h2 class="text-center mb-4">Ajouter un nouveau fichier</h2>-->
         <form method="POST">
-          <formgroup class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-            <small class="small">Veuillez entrer votre mail de connexion ETTIAM (prenom.nom@ettiam.com)</small>
+              <formgroup>
+            <label for="name" class="form-label">Nom du fichier</label>
+            <input type="name" class="form-control" id="name" name="name" required>
+          </formgroup><br>
+          <formgroup>
+            <label for="file" class="form-label">Déposer le fichier</label>
+            <input type="file" class="form-control" id="file" name="file" required>
+          </formgroup><br>
+          <formgroup>
+            <label for="description" class="form-label">Description du fichier</label>
+            <textarea id="description" class="form-control" name="description" placeholder="Ajouter une description..." required></textarea>
           </formgroup><br><br>
-          <formgroup class="mb-3">
-            <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-          </formgroup><br><br>
-          <button type="submit" class="btn btn-primary">Se connecter</button>
+          <div class="btnform">
+            <button type="submit" class="btn btn-primary">Valider</button>
+            <button type="reset" class="btn btn-secondary">Annuler</button>
+          </div>
         </form>
       </div>
     </div>
