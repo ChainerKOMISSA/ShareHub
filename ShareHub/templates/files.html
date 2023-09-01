@@ -17,7 +17,7 @@
               <button class="btn btn-outline-primary" type="button" id="button-addon2">Rechercher</button>
             </div>
           <div class="input-group mb-3 side2">
-              <a href="/upload" type="button" class="btn btn-outline-primary">Déposer un nouveau fichier</a>
+              <a href="{{ url_for('upload', user_id = user_id) }}" type="button" class="btn btn-outline-primary">Déposer un nouveau fichier</a>
             </div>
         </div><br>
       <div class="row fichiers">

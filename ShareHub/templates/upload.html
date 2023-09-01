@@ -10,14 +10,14 @@
 
     <div class="d-flex align-items-center justify-content-center">
       <div class="container p-5 upload" data-aos="zoom-in" data-aos-delay="100">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
               <formgroup>
             <label for="namefile" class="form-label">Nom du fichier</label>
             <input type="name" class="form-control" id="namefile" name="namefile" required>
           </formgroup><br>
           <formgroup>
-            <label for="file" class="form-label">Déposer le fichier</label>
-            <input type="file" class="form-control" id="file" name="file" required>
+            <label for="fichier" class="form-label">Déposer le fichier</label>
+            <input type="file" class="form-control" id="fichier" name="fichier" required>
           </formgroup><br>
           <formgroup>
             <label for="description" class="form-label">Description du fichier</label>
