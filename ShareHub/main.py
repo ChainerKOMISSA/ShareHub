@@ -34,7 +34,7 @@ def login():
         if utilisateur:
             user_id = utilisateur[0]
             flash('Connexion réussie!', category='success')
-            return render_template('files.html', user_id = user_id)
+            return redirect(url_for('files', user_id = user_id))
         else:
             flash('Identifiants incorrects, Veuillez réessayer', category='error')
     return render_template('login.html')
@@ -72,7 +72,15 @@ def upload(user_id):
             flash('Nous avons rencontré une erreur!', category='error')
     return render_template('upload.html')
 
-
+##READ
+@app.route('/files/<string:user_id>', methods=['GET'])
+def files(user_id):
+    cursor = db.cursor()
+    query = "SELECT * FROM File"
+    cursor.execute(query)
+    fichiers = cursor.fetchall()
+    cursor.close()
+    return render_template('files.html', fichiers = fichiers, user_id = user_id)
 
 
 
