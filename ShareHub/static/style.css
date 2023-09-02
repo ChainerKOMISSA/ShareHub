@@ -463,29 +463,6 @@ section {
   fill: #ffa76e;
 }
 
-.services .iconbox-pink i {
-  color: #e80368;
-}
-
-.services .iconbox-pink:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-pink:hover .icon path {
-  fill: #e80368;
-}
-
-.services .iconbox-yellow i {
-  color: #ffbb2c;
-}
-
-.services .iconbox-yellow:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-yellow:hover .icon path {
-  fill: #ffbb2c;
-}
 
 .services .iconbox-red i {
   color: #ff5828;
@@ -499,17 +476,18 @@ section {
   fill: #ff5828;
 }
 
-.services .iconbox-teal i {
-  color: #11dbcf;
+.services .iconbox-black i {
+  color: #000;
 }
 
-.services .iconbox-teal:hover .icon i {
+.services .iconbox-black:hover .icon i {
   color: #fff;
 }
 
-.services .iconbox-teal:hover .icon path {
-  fill: #11dbcf;
+.services .iconbox-black:hover .icon path {
+  fill: #000;
 }
+
 
 .haut {
     display : flex;
