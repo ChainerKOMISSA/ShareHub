@@ -16,6 +16,22 @@ db = mysql.connector.connect(
     database="shareandgodb",
 )
 
+def get_icons_class(file_extension):
+    icon_mapping = {
+        'pdf': 'bi bi-file-earmark-pdf',
+        'docx': 'bi-bi-file-earmark-word',
+        'txt': 'bi bi-filetype-txt',
+        'xlsx': 'bi bi-file-earmark-excel',
+        'png': 'bi bi-filetype-png',
+        'jpg': 'bi bi-filetype-jpg',
+        'jpeg': 'bi bi-filetype-jpg',
+        'psd': 'bi bi-filetype-psd',
+        'pub': 'bi bi-file-earmark-ppt',
+        'pptx': 'bi bi-filetype-pptx',
+        'zip':'bi bi-file-earmark-zip',
+    }
+    return icon_mapping.get(file_extension, 'bi-file')
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -78,9 +94,13 @@ def files(user_id):
     cursor = db.cursor()
     query = "SELECT * FROM File"
     cursor.execute(query)
-    fichiers = cursor.fetchall()
+    files = cursor.fetchall()
     cursor.close()
-    return render_template('files.html', fichiers = fichiers, user_id = user_id)
+
+    for fichier in files:
+        fichier['icon_class'] = get_icons_class(fichier['extension'])
+    return render_template('files.html', fichiers = files, user_id = user_id)
+
 
 
 
