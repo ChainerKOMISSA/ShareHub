@@ -91,6 +91,22 @@ def get_icon_class(file_extension):
     }
     return icon_mapping.get(file_extension, 'bi-file')
 
+def get_color_class(file_extension):
+    color_mapping = {
+        'pdf': '#FF2D00',
+        'docx': '#2A60F3',
+        'txt': '#313132',
+        'xlsx': '#029506',
+        'png': '#F913BC',
+        'jpg': '#F913BC',
+        'jpeg': '#F913BC',
+        'psd': '#060694',
+        'pub': '#03AB9B',
+        'pptx': '#F05504',
+        'zip': '#EABF00',
+    }
+    return color_mapping.get(file_extension, '#313132')
+
 
 @app.route('/files/<string:user_id>', methods=['GET'])
 def files(user_id):
@@ -101,10 +117,11 @@ def files(user_id):
     cursor.close()
 
     files_formatted = []
-
     for file in files :
         linkfile = file[3]
         nom, extension = os.path.splitext(linkfile)
+        color_class = get_color_class(extension[1:])
+
         format = {
             'id' : file[0],
             'namefile' : file[1],
@@ -113,7 +130,8 @@ def files(user_id):
             'extension': extension[1:],
             'added': file[4],
             'user_id' : file[5],
-            'icon_class': get_icon_class(file[3].split('.')[-1])
+            'icon_class': get_icon_class(file[3].split('.')[-1]),
+            'color_class' : color_class
         }
         files_formatted.append(format)
     return render_template('files.html', fichiers = files_formatted, user_id = user_id)
