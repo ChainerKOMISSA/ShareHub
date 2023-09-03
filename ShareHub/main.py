@@ -68,7 +68,7 @@ def upload(user_id):
             db.commit()
             cursor.close()
             flash('Fichier déposé avec succès!', category='success')
-            return render_template('files.html')
+            return redirect(url_for('files', user_id = user_id))
         else :
             flash('Nous avons rencontré une erreur!', category='error')
     return render_template('upload.html')
@@ -78,7 +78,7 @@ def upload(user_id):
 def get_icon_class(file_extension):
     icon_mapping = {
         'pdf': 'bi bi-file-earmark-pdf',
-        'docx': 'bi-bi-file-earmark-word',
+        'docx': 'bi bi-file-earmark-word',
         'txt': 'bi bi-filetype-txt',
         'xlsx': 'bi bi-file-earmark-excel',
         'png': 'bi bi-filetype-png',
