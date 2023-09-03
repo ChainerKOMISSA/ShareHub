@@ -13,7 +13,7 @@
         </div>
         <div class="haut">
            <div class="input-group mb-3 side1">
-              <input type="text" class="form-control" placeholder="Rechercher..." aria-label="Recipient's username" aria-describedby="button-addon2">
+              <input type="text" id="search-input" class="form-control" placeholder="Rechercher..." aria-label="Recipient's username" aria-describedby="button-addon2">
               <button class="btn btn-outline-primary" type="button" id="button-addon2">Rechercher</button>
             </div>
           <div class="input-group mb-3 side2">
@@ -45,5 +45,26 @@
       </div>
       </div>
     </section><!-- End Services Section -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('search-input');
+
+        searchInput.addEventListener('input', function () {
+        const query = searchInput.value.toLowerCase();
+
+        const fichiers = document.querySelectorAll('.fichiers .col-lg-4');
+        fichiers.forEach(function (fichier) {
+        const namefile = fichier.querySelector('h4 a').textContent.toLowerCase();
+
+        if (namefile.includes(query)) {
+            fichier.style.display = 'block';
+        } else {
+            fichier.style.display = 'none';
+        }
+        });
+        });
+    });
+</script>
 
 {% endblock %}

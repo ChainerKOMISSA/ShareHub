@@ -395,7 +395,7 @@ section {
   margin : 15px;
   text-align: center;
   transition: all ease-in-out 0.3s;
-  border : 2px solid #fff;
+  border : 1px solid #DCDCDC;
 }
 
 
