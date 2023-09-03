@@ -136,7 +136,18 @@ def files(user_id):
         files_formatted.append(format)
     return render_template('files.html', fichiers = files_formatted, user_id = user_id)
 
+#DELETE
 
+@app.route('/delete/<string:user_id>/<int:file_id>', methods=['POST'])
+def delete(user_id, file_id):
+    cursor = db.cursor()
+    query = "DELETE FROM File WHERE idfile = %s"
+    cursor.execute(query, (file_id,))
+    db.commit()
+    cursor.close()
+
+    flash('Fichier supprimé', category='success')
+    return redirect(url_for('files', user_id=user_id))
 
 
 if __name__ == '__main__':
