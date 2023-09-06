@@ -140,7 +140,7 @@ def files(user_id):
 
 ##UPDATE
 @app.route('/edit/<string:user_id>/<int:file_id>', methods=['GET', 'POST'])
-def edit(user_id, file_id):
+def edit_file(user_id, file_id):
     cursor1 = db.cursor()
     query = "SELECT * FROM File WHERE idfile = %s"
     cursor1.execute(query, (file_id,))
@@ -204,9 +204,6 @@ def download_file(user_id, file_id):
         else:
             flash('Fichier invalide', category='error')
             return redirect(url_for('files', user_id = user_id))
-
-
-
 
 
 if __name__ == '__main__':
