@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, url_for, flash
+from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory
 import mysql.connector
 from datetime import datetime
 from werkzeug.utils import secure_filename, os
@@ -119,6 +119,8 @@ def files(user_id):
     files_formatted = []
     for file in files :
         linkfile = file[3]
+        #print("##################")
+        #print(linkfile)
         nom, extension = os.path.splitext(linkfile)
         color_class = get_color_class(extension[1:])
 
@@ -137,7 +139,6 @@ def files(user_id):
     return render_template('files.html', fichiers = files_formatted, user_id = user_id)
 
 #DELETE
-
 @app.route('/delete/<string:user_id>/<int:file_id>', methods=['POST'])
 def delete(user_id, file_id):
     cursor = db.cursor()
@@ -148,6 +149,12 @@ def delete(user_id, file_id):
 
     flash('Fichier supprimé', category='success')
     return redirect(url_for('files', user_id=user_id))
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+
 
 
 if __name__ == '__main__':
