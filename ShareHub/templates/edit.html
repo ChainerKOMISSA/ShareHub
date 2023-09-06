@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}ShareHub | Modification de fichier {% endblock %}
+
+{% block content %}
+
+<section id="hero">
+  <div class="section-title">
+    <h2>Modifier ce fichier</h2>
+  </div>
+
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="container p-5 upload" data-aos="zoom-in" data-aos-delay="100">
+        <form method="POST" enctype="multipart/form-data">
+              <formgroup>
+            <label for="namefile" class="form-label">Nom du fichier</label>
+            <input type="name" class="form-control" id="namefile" name="namefile" value="{{ file_data[1] }}" required>
+          </formgroup><br>
+          <formgroup>
+            <label for="fichier" class="form-label">Déposer le fichier</label>
+            <input type="file" class="form-control" id="fichier" name="fichier" value="{{ file_data[3] }}" required>
+          </formgroup><br>
+          <formgroup>
+            <label for="description" class="form-label">Description du fichier</label>
+            <textarea id="description" class="form-control" name="description" required>{{ file_data[2]}}</textarea>
+          </formgroup><br><br>
+          <div class="btnform">
+            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+            <button type="reset" class="btn btn-secondary">Annuler</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+{% endblock %}

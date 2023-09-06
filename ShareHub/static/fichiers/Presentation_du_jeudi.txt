@@ -1,0 +1,13 @@
+Présentation du jeudi
+
+- Présentation du sujet
+- Objectifs atteints
+- Présentation total 5 min
+- Démo : 5 min
+- Pas d'animations dans les diapos
+- Tous les membres du groupe vont devant, 2personnes au max pour présenter (présentation + démo) => sur 1 seul pc
+- Démo => uniquement les éléments importants (préparer la démo)
+- Préenregistrer les éléments de démo
+- Lancer l'application avant d'aller devant
+- Processus de gestion de projet et résultats => gitlab, interaction entre les membres (dernière minute)
+=> Pas besoin de démontrer les éléments de base (crud, base de données, etc)

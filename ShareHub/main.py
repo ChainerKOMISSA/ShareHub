@@ -138,6 +138,41 @@ def files(user_id):
         files_formatted.append(format)
     return render_template('files.html', fichiers = files_formatted, user_id = user_id)
 
+##UPDATE
+@app.route('/edit/<string:user_id>/<int:file_id>', methods=['GET', 'POST'])
+def edit(user_id, file_id):
+    cursor1 = db.cursor()
+    query = "SELECT * FROM File WHERE idfile = %s"
+    cursor1.execute(query, (file_id,))
+    file_data = cursor1.fetchone()
+    cursor1.close()
+
+    if file_data is None:
+        flash('Fichier non trouvé!', category='error')
+        return redirect(url_for('files', user_id=user_id))
+    if request.method == 'POST':
+        nom = request.form['namefile']
+        description = request.form['description']
+        date = datetime.now()
+        added = date.strftime('%d-%m-%Y %H:%M:%S')
+        fichier = request.files.get('fichier')
+
+        filename = secure_filename(fichier.filename)
+        image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        fichier.save(image_path)
+
+        cursor = db.cursor()
+        query = "UPDATE File SET namefile = %s, description = %s, linkfile = %s, added = %s, user_id = %s WHERE idfile = %s"
+        cursor.execute(query, (nom, description, image_path, added, user_id, file_id))
+        db.commit()
+        cursor.close()
+        flash('Fichier modifié avec succès!', category='success')
+        return redirect(url_for('files', user_id=user_id))
+    return render_template('edit.html', file_data = file_data, user_id = user_id)
+
+
+
+
 #DELETE
 @app.route('/delete/<string:user_id>/<int:file_id>', methods=['POST'])
 def delete(user_id, file_id):
@@ -150,6 +185,7 @@ def delete(user_id, file_id):
     flash('Fichier supprimé', category='success')
     return redirect(url_for('files', user_id=user_id))
 
+##TELECHARGEMENT DE FICHIER
 @app.route('/download/<string:user_id>/<int:file_id>', methods=['GET'])
 def download_file(user_id, file_id):
     cursor = db.cursor()
