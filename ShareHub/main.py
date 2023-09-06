@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory
+from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory, send_file
 import mysql.connector
 from datetime import datetime
 from werkzeug.utils import secure_filename, os
@@ -150,9 +150,25 @@ def delete(user_id, file_id):
     flash('Fichier supprimé', category='success')
     return redirect(url_for('files', user_id=user_id))
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+@app.route('/download/<string:user_id>/<int:file_id>', methods=['GET'])
+def download_file(user_id, file_id):
+    cursor = db.cursor()
+    query = "SELECT * FROM File WHERE idfile = %s"
+    cursor.execute(query, (file_id,))
+    file_data = cursor.fetchone()
+    cursor.close()
+
+    if file_data is None:
+        flash('Fichier non trouvé!', category='error')
+        return redirect(url_for('files', user_id=user_id))
+    else :
+        linkfile = file_data[3]
+        if linkfile.startswith(app.config['UPLOAD_FOLDER']):
+            return send_file(linkfile, as_attachment=True)
+        else:
+            flash('Fichier invalide', category='error')
+            return redirect(url_for('files', user_id = user_id))
+
 
 
 

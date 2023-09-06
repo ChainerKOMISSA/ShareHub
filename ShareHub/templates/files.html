@@ -33,7 +33,7 @@
               <h4>{{ fichier['namefile'] }}</h4>
               <p>{{ fichier['description'] }}</p><br>
                 <div class="row">
-                    <div class="col"><a href="{{ url_for('uploaded_file', filename=fichier['linkfile']) }}" target="_blank" download><i class="bi bi-download" alt="Télécharger" style="color : #4E4E4D"></i></a></div>
+                    <div class="col"><a href="{{ url_for('download_file', user_id = user_id, file_id=fichier['id']) }}" target="_blank" download><i class="bi bi-download" alt="Télécharger" style="color : #4E4E4D"></i></a></div>
                     <div class="col"><a href=""><i class="bi bi-pencil-square" style="color : #4E4E4D"></i></a></div>
                     <div class="col"><form method="POST", action="{{ url_for('delete', user_id = user_id, file_id = fichier['id']) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce fichier ?')"><button type="submit" style="border : none; background-color : #fff"><i class="bi bi-trash3" style="color : red"></i></button></form></div>
                 </div>
