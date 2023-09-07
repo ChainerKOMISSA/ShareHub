@@ -119,8 +119,6 @@ def files(user_id):
     files_formatted = []
     for file in files :
         linkfile = file[3]
-        #print("##################")
-        #print(linkfile)
         nom, extension = os.path.splitext(linkfile)
         color_class = get_color_class(extension[1:])
 
@@ -139,8 +137,8 @@ def files(user_id):
     return render_template('files.html', fichiers = files_formatted, user_id = user_id)
 
 ##UPDATE
-@app.route('/edit/<string:user_id>/<int:file_id>', methods=['GET', 'POST'])
-def edit_file(user_id, file_id):
+'''@app.route('/edit/<string:user_id>/<int:file_id>', methods=['GET', 'POST'])
+def edit(user_id, file_id):
     cursor1 = db.cursor()
     query = "SELECT * FROM File WHERE idfile = %s"
     cursor1.execute(query, (file_id,))
@@ -168,9 +166,7 @@ def edit_file(user_id, file_id):
         cursor.close()
         flash('Fichier modifié avec succès!', category='success')
         return redirect(url_for('files', user_id=user_id))
-    return render_template('edit.html', file_data = file_data, user_id = user_id)
-
-
+    return render_template('edit.html', file_data = file_data, user_id = user_id)'''
 
 
 #DELETE
